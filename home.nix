@@ -1,13 +1,22 @@
 { lib, pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
-  
+
   programs.vscode = {
     enable = true;
     # Optionally, specify extensions:
     extensions = with pkgs.vscode-extensions; [ 
       bbenoist.nix
     ];
+  };
+
+  programs.git = {
+    enable = true;
+    extraConfig = {
+        user.name = "alswang18";
+        user.email = "alec.sy.wang@gmail.com";
+        init.defaultBranch = "main";
+      };
   };
 
   programs.zsh = {
